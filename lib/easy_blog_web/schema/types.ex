@@ -1,7 +1,7 @@
 defmodule EasyBlogWeb.Schema.Types do
   use Absinthe.Schema.Notation
 
-  alias EasyBlogWeb.Schema.Types
+  alias EasyBlogWeb.Schema
 
-  import_types(Types.Usertype)
+  import_types(Schema.UserType)
 end

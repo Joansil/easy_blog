@@ -16,5 +16,4 @@ defmodule EasyBlogWeb.Schema.UserType do
     field(:password, non_null(:string))
     field(:password_confirmation, non_null(:string))
   end
-
 end
