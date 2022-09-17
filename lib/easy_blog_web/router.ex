@@ -5,8 +5,14 @@ defmodule EasyBlogWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/api", EasyBlogWeb do
+  scope "/api" do
     pipe_through :api
+
+    forward("/graphql", Absinthe.Plug, schema: EasyBlogWeb.Schema)
+
+    if Mix.env() == :dev do
+      forward("/graphiql", Absinthe.Plug.GraphiQL, schema: EasyBlogWeb.Schema)
+    end
   end
 
   # Enables LiveDashboard only for development
