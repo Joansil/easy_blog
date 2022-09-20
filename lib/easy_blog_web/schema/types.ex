@@ -4,4 +4,5 @@ defmodule EasyBlogWeb.Schema.Types do
   alias EasyBlogWeb.Schema
 
   import_types(Schema.UserType)
+  import_types(Schema.SessionType)
 end

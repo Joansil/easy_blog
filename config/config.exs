@@ -34,6 +34,12 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
+# Guardian config
+config :easy_blog, EasyBlog.Guardian,
+  issuer: "easy_blog",
+  secret_key: "xQBIXZyMr00eVlpOB90d1TGBeWA71tjyXJ+ccHvFcMaBoIjLQ3YItwWRR4ut3ax+"
+
+
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
