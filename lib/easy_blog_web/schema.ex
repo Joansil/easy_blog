@@ -2,6 +2,7 @@ defmodule EasyBlogWeb.Schema do
   use Absinthe.Schema
 
   alias EasyBlogWeb.Resolvers
+  alias EasyBlogWeb.Schema.Middleware
 
   # import types
   import_types(EasyBlogWeb.Schema.Types)
@@ -9,7 +10,7 @@ defmodule EasyBlogWeb.Schema do
   query do
     @desc "get a list of all users"
     field :users, list_of(:user_type) do
-      # resolver
+      middleware(Middleware.Authorize, :any)
       resolve(&Resolvers.UserResolver.users/3)
     end
   end
