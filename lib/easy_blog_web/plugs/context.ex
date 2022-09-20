@@ -5,13 +5,13 @@ defmodule EasyBlogWeb.Plugs.Context do
 
   def init(opts), do: opts
 
-  def call(conn, _opts) do
+  def call(conn, _) do
     context = build_context(conn)
     Absinthe.Plug.put_options(conn, context: context)
   end
 
   defp build_context(conn) do
-    with ["Bearer" <> token] <- get_req_header(conn, "authorization"),
+    with ["Bearer " <> token] <- get_req_header(conn, "authorization"),
          {:ok, claims} <- EasyBlog.Guardian.decode_and_verify(token),
          {:ok, user} <- EasyBlog.Guardian.resource_from_claims(claims) do
       %{current_user: user}
