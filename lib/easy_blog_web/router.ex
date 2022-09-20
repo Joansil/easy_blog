@@ -3,6 +3,7 @@ defmodule EasyBlogWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug EasyBlogWeb.Plugs.Context
   end
 
   scope "/api" do
