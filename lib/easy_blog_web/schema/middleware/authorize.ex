@@ -3,11 +3,11 @@ defmodule EasyBlogWeb.Schema.Middleware.Authorize do
 
   def call(resolution, role) do
     with %{current_user: current_user} <- resolution.context,
-      true <- correct_role?(current_user, role) do
-        resolution
-
+         true <- correct_role?(current_user, role) do
+      resolution
     else
-      _ -> resolution
+      _ ->
+        resolution
         |> Absinthe.Resolution.put_result({:error, "Unauthorized"})
     end
   end

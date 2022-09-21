@@ -5,4 +5,6 @@ defmodule EasyBlogWeb.Schema.Types do
 
   import_types(Schema.UserType)
   import_types(Schema.SessionType)
+  import_types(Schema.PostType)
+  import_types(Schema.CommentType)
 end
